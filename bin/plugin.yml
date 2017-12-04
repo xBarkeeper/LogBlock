@@ -1,6 +1,6 @@
 name: LogBlock
 version: 1.0.0
-main: de.rissi.LogBlock.LogBlock
+main: de.rissi.LogBlock.Main.LogBlock
 description: Log Blocks
 author: xBarkeeper
 website: rissi.de

@@ -1,14 +1,15 @@
-package de.rissi.LogBlock;
+package de.rissi.LogBlock.Main;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.rissi.LogBlock.Events.LogBlock_BreakBlockEvent;;
+import de.rissi.LogBlock.Events.LogBlock_BreakBlockEvent;
 
 public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 {
+
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -22,8 +23,8 @@ public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 		LogBlock_OutsourcingCommands cLogBlock_OutsourcingCommands = new LogBlock_OutsourcingCommands(this);
 		getCommand("LogBlock").setExecutor(cLogBlock_OutsourcingCommands);
 	}
-	
-	private void registerEvents() {	
+
+	private void registerEvents() {
 		new LogBlock_BreakBlockEvent(this);
 	}
 

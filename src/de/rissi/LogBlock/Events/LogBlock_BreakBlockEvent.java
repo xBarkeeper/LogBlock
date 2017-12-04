@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import de.rissi.LogBlock.LogBlock;;
+import de.rissi.LogBlock.Main.LogBlock;;
 
 public class LogBlock_BreakBlockEvent implements Listener
 {

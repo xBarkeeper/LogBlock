@@ -1,4 +1,4 @@
-package de.rissi.LogBlock;
+package de.rissi.LogBlock.Main;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
