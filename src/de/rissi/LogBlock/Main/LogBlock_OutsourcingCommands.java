@@ -21,7 +21,7 @@ public class LogBlock_OutsourcingCommands implements CommandExecutor
 		
 		Player p = (Player) sender;
 		
-		p.sendMessage("No Commands avaible at the moment");
+		p.sendMessage("No Commands avaible at the moment!!!");
 	
 		return true;
 	}

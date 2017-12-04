@@ -75,4 +75,4 @@ public class MySQL extends Database {
 				this.user, this.password);
 		return connection;
 	}
-}
+}  
