@@ -1,0 +1,11 @@
+name: LogBlock
+version: 1.0.0
+main: de.rissi.LogBlock.LogBlock
+description: Log Blocks
+author: xBarkeeper
+website: rissi.de
+commands:
+     LogBlock:
+          description: Use "/lb Help" to see a overview
+          usage: </command>
+          aliases: [lb]
