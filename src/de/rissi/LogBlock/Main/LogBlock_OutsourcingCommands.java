@@ -1,6 +1,7 @@
 package de.rissi.LogBlock.Main;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -43,8 +44,9 @@ public class LogBlock_OutsourcingCommands implements CommandExecutor
 				
 				Date tg = new Date(results.get(i).getTimestamp("column datetime").getTime());
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
+				String time = sdf.format(tg);
 				
-				p.sendMessage("Player " + blockBreakPlayer.getName() + " zerstörte hier am ");
+				p.sendMessage("Player " + blockBreakPlayer.getName() + " zerstörte hier am " + time);
 			}
 		} catch (Exception exc)
 		{
