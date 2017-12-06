@@ -9,13 +9,24 @@ public class LogBlock_Values
 
 		// Database
 	
-		public static final String	DATABASE_IP						= "localhost";
-		public static final String	DATABASE_PORT					= "3306";
-		public static final String	DATABASE_USERNAME				= "DBUser";
-		public static final String	DATABASE_USERPASSWORD			= "Passwort1";
-		public static final String	DATABASE_DBNAME					= "logBlock";
+		public static final String					DATABASE_IP						= "localhost";
+		public static final String					DATABASE_PORT					= "3306";
+		public static final String					DATABASE_USERNAME				= "DBUser";
+		public static final String					DATABASE_USERPASSWORD			= "Passwort1";
+		public static final String					DATABASE_DBNAME					= "logBlock";
 	
-		public static final String	DATABASE_CREATEDB_COMMAND		= "CREATE DATABASE IF NOT EXISTS " + DATABASE_DBNAME;
+		public static final String					DATABASE_TABLE_BLOCK			= "block";
+		public static final String					DATABASE_TABLE_PLAYER			= "player";
+
+		public static final String					DATABASE_CREATEDB_COMMAND		= "CREATE DATABASE IF NOT EXISTS "
+				+ DATABASE_DBNAME;
+	
+		public static final String					ROWNAMEBLOCK_ID					= "Block_ID";
+		public static final String					ROWNAMEBLOCK_TYP				= "Block_Typ";
+		public static final String					ROWNAMEBLOCK_COORDS				= "Block_Coords";
+		public static final String					ROWNAMEBLOCK_BREAKTIME			= "Block_BreakTime";
+		public static final String					ROWNAMEPLAYER_UUID				= "Player_UUID";
+		
 		public static final String[]	DATABASE_CREATETABLE_COMMAND	=
 		{ 	"CREATE TABLE IF NOT EXISTS `" + DATABASE_DBNAME + "`.`Player` ("
 				+ "`Player_UUID` VARCHAR(36) NOT NULL,"
@@ -24,11 +35,11 @@ public class LogBlock_Values
 				+ "UNIQUE INDEX `Player_UUID_UNIQUE` (`Player_UUID` ASC),"
 				+ "UNIQUE INDEX `Player_Name_UNIQUE` (`Player_Name` ASC))",
 			"CREATE TABLE IF NOT EXISTS `" + DATABASE_DBNAME + "`.`Block` ("
-				+ "`Block_ID` INT NOT NULL AUTO_INCREMENT,"
-				+ "`Block_Typ` VARCHAR(100) NOT NULL,"
-				+ "`Block_Coords` VARCHAR(50) NOT NULL,"
-				+ "`Block_BreakTime` DATETIME NOT NULL,"
-				+ "`Player_UUID` VARCHAR(36) NOT NULL,"
+				+ "`" + ROWNAMEBLOCK_ID + "` INT NOT NULL AUTO_INCREMENT,"
+				+ "`" + ROWNAMEBLOCK_TYP + "` VARCHAR(100) NOT NULL,"
+				+ "`" + ROWNAMEBLOCK_COORDS + "` VARCHAR(50) NOT NULL,"
+				+ "`" + ROWNAMEBLOCK_BREAKTIME + "` DATETIME NOT NULL,"
+				+ "`" + ROWNAMEPLAYER_UUID + "` VARCHAR(36) NOT NULL,"
 				+ "PRIMARY KEY (`Block_ID`))"
 		};
 

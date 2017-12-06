@@ -28,16 +28,16 @@ public class LogBlock_BlockBreakHistoryCommand
 			Databse_Utils.statement = Databse_Utils.connection.createStatement();
 
 			ResultSet res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME
-					+ ".block WHERE Block_Coords = '" + playerCoords + "'");
+					+ ".block WHERE " + LogBlock_Values.ROWNAMEBLOCK_COORDS + " = '" + playerCoords + "'");
 			while (res.next())
 			{
-				Date tg = new Date(res.getTimestamp("Block_BreakTime").getTime());
+				Date tg = new Date(res.getTimestamp(LogBlock_Values.ROWNAMEBLOCK_BREAKTIME).getTime());
 				SimpleDateFormat sdf = new SimpleDateFormat(LogBlock_Values.TIMEFORMAT);
 				String[] time = sdf.format(tg).split(" ");
 
-				p.sendMessage(Bukkit.getOfflinePlayer(UUID.fromString(res.getString("Player_UUID"))).getName()
+				p.sendMessage(Bukkit.getOfflinePlayer(UUID.fromString(res.getString(LogBlock_Values.ROWNAMEPLAYER_UUID))).getName()
 						+ " zerstörte hier am " + time[0] + " um " + time[1] + " den Block "
-						+ res.getString("Block_Typ"));
+						+ res.getString(LogBlock_Values.ROWNAMEBLOCK_TYP));
 			}
 
 			Databse_Utils.connection.close();
