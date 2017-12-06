@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.rissi.LogBlock.Database.Databse_Utils;
 import de.rissi.LogBlock.Events.LogBlock_BreakBlockEvent;
+import de.rissi.LogBlock.Events.LogBlock_SetArenaEvent;
 
 public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 {
@@ -26,6 +27,9 @@ public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 	private void registerEvents() {
 		new LogBlock_BreakBlockEvent(this);
 		getServer().getPluginManager().registerEvents(new LogBlock_BreakBlockEvent(this) , this);
+		
+		new LogBlock_SetArenaEvent(this);
+		getServer().getPluginManager().registerEvents(new LogBlock_SetArenaEvent(this) , this);
 	}
 
 }
