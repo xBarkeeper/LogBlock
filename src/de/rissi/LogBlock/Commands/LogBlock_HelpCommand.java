@@ -11,6 +11,7 @@ public class LogBlock_HelpCommand
 		Player p = (Player) sender;
 
 		p.sendMessage("Pung");
+		
 
 		return true;
 	}

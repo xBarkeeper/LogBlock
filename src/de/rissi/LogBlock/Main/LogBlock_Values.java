@@ -2,6 +2,8 @@ package de.rissi.LogBlock.Main;
 
 import java.util.HashMap;
 
+import org.bukkit.inventory.ItemStack;
+
 public class LogBlock_Values
 {
 
@@ -52,4 +54,7 @@ public class LogBlock_Values
 		public static final String					TIMEFORMAT						= ("dd.MM.yyyy HH:mm:ss");
 		public static final String					TIMEFORMAT_DATABASE				= ("yyyy-MM-dd HH:mm:ss");
 		public static HashMap<String, Integer[]>	areaHashMap						= new HashMap<String, Integer[]>();
+		public static HashMap<String, ItemStack[]>	inventoryContents				= new HashMap<String, ItemStack[]>();
+		public static HashMap<String, ItemStack[]>	inventoryArmorContents			= new HashMap<String, ItemStack[]>();
+		public static HashMap<String, Boolean>		inEditMode						= new HashMap<String, Boolean>();
 }
