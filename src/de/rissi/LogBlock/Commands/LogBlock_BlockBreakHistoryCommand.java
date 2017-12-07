@@ -27,17 +27,19 @@ public class LogBlock_BlockBreakHistoryCommand
 			Databse_Utils.connection = Databse_Utils.MySql.openConnection();
 			Databse_Utils.statement = Databse_Utils.connection.createStatement();
 
-			ResultSet res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME
-					+ ".block WHERE " + LogBlock_Values.ROWNAMEBLOCK_COORDS + " = '" + playerCoords + "'");
+			ResultSet res = Databse_Utils.statement
+					.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_TABLE_BLOCKBREAK + " WHERE "
+							+ LogBlock_Values.COLUMNNAME_BLOCK_COORDS + " = '" + playerCoords + "'");
 			while (res.next())
 			{
-				Date tg = new Date(res.getTimestamp(LogBlock_Values.ROWNAMEBLOCK_BREAKTIME).getTime());
+				Date tg = new Date(res.getTimestamp(LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME).getTime());
 				SimpleDateFormat sdf = new SimpleDateFormat(LogBlock_Values.TIMEFORMAT);
 				String[] time = sdf.format(tg).split(" ");
 
-				p.sendMessage(Bukkit.getOfflinePlayer(UUID.fromString(res.getString(LogBlock_Values.ROWNAMEPLAYER_UUID))).getName()
-						+ " zerstörte hier am " + time[0] + " um " + time[1] + " den Block "
-						+ res.getString(LogBlock_Values.ROWNAMEBLOCK_TYP));
+				p.sendMessage(
+						Bukkit.getOfflinePlayer(UUID.fromString(res.getString(LogBlock_Values.COLUMNNAME_PLAYER_UUID)))
+								.getName() + " zerstörte hier am " + time[0] + " um " + time[1] + " den Block "
+								+ res.getString(LogBlock_Values.COLUMNNAME_BLOCK_TYP));
 			}
 
 			Databse_Utils.connection.close();

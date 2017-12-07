@@ -22,7 +22,7 @@ public class LogBlock_ResetAreaCommand
 		Integer[] pos1 = LogBlock_Values.areaHashMap.get("1:" + p.getUniqueId());
 		Integer[] pos2 = LogBlock_Values.areaHashMap.get("2:" + p.getUniqueId());
 
-		boolean[] einsIstGroeﬂerAlsZwei = new boolean[3];
+		boolean[] oneIsBigger = new boolean[3];
 		Integer[] dif = new Integer[3];
 		Integer[] begin = new Integer[3];
 
@@ -31,12 +31,12 @@ public class LogBlock_ResetAreaCommand
 			if (pos1[i] < pos2[i])
 			{
 				dif[i] = pos2[i] - pos1[i];
-				einsIstGroeﬂerAlsZwei[i] = false;
+				oneIsBigger[i] = false;
 				begin[i] = pos1[i];
 			} else
 			{
 				dif[i] = pos1[i] - pos2[i];
-				einsIstGroeﬂerAlsZwei[i] = true;
+				oneIsBigger[i] = true;
 				begin[i] = pos2[i];
 			}
 		}
@@ -54,9 +54,9 @@ public class LogBlock_ResetAreaCommand
 					{
 
 						ResultSet res = Databse_Utils.statement
-								.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME
-										+ ".block WHERE Block_Coords = '" + x + "," + y + "," + z
-										+ "' and Block_BreakTime >= '" + args[0] + " " + args[1] + "'");
+								.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_TABLE_BLOCKBREAK
+										+ " WHERE " + LogBlock_Values.COLUMNNAME_BLOCK_COORDS + " = '" + x + "," + y + "," + z
+										+ "' and " + LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME + " >= '" + args[0] + " " + args[1] + "'");
 						System.out.println("Blockupdate: " + x + " " + y + " " + z);
 						while (res.next())
 						{
@@ -66,8 +66,8 @@ public class LogBlock_ResetAreaCommand
 								System.out.println("Hallo");
 								Location loc = new Location(Bukkit.getWorld("world"), x, y, z);
 								Block block = loc.getBlock();
-								block.setType(Material.getMaterial((res.getString("Block_Typ"))));
-								System.out.println(res.getString("Block_Typ") );
+								block.setType(Material.getMaterial((res.getString(LogBlock_Values.COLUMNNAME_BLOCK_TYP))));
+								System.out.println(res.getString(LogBlock_Values.COLUMNNAME_BLOCK_TYP) );
 							}
 						}
 					}

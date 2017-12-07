@@ -30,8 +30,9 @@ public class LogBlock_BreakBlockEvent implements Listener
 		String coords = e.getBlock().getX() + "," + e.getBlock().getY() + "," + e.getBlock().getZ();
 		
 
-		Databse_Utils.scribe("INSERT INTO " + LogBlock_Values.DATABASE_DBNAME + ".block "
-							+ "(`Block_Typ`, `Block_Coords`, `Block_BreakTime`, `Player_UUID`)"
+		Databse_Utils.scribe("INSERT INTO " + LogBlock_Values.DATABASE_TABLE_BLOCKBREAK
+							+ "(`" + LogBlock_Values.COLUMNNAME_BLOCK_TYP + "`, `" + LogBlock_Values.COLUMNNAME_BLOCK_COORDS + "`,"
+							+ " `" + LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME + "`, `" + LogBlock_Values.COLUMNNAME_PLAYER_UUID + "`)"
 							+ " VALUES "
 							+ "("
 							+ "'" + e.getBlock().getType() + "',"
@@ -42,7 +43,7 @@ public class LogBlock_BreakBlockEvent implements Listener
 	}
 	
 	public static String getCurrentTimeStamp() {
-	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    SimpleDateFormat sdfDate = new SimpleDateFormat(LogBlock_Values.TIMEFORMAT_DATABASE);
 	    Date now = new Date();
 	    String strDate = sdfDate.format(now);
 	    return strDate;

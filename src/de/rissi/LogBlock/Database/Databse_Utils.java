@@ -19,11 +19,10 @@ public class Databse_Utils
 			connection = MySql.openConnection();
 			statement = connection.createStatement();
 
-			statement.execute(createDB); // "CREATE DATABASE IF NOT EXISTS" + dbName
+			statement.execute(createDB);
 			for (int i = 0; i < createTable.length; i++)
 			{
-				statement.execute(createTable[i]); // "CREATE TABLE IF NOT EXISTS `" + dbName + "`.`" + tableName +
-													// "`(`PlayerName` VARCHAR(50) NULL,`tokens` INT NULL)"
+				statement.execute(createTable[i]);
 			}
 
 			connection.close();
