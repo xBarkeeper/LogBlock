@@ -28,7 +28,7 @@ public class LogBlock_BlockBreakHistoryCommand
 			Databse_Utils.statement = Databse_Utils.connection.createStatement();
 
 			ResultSet res = Databse_Utils.statement
-					.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_TABLE_BLOCKBREAK + " WHERE "
+					.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME + "." +LogBlock_Values.DATABASE_TABLE_BLOCK + " WHERE "
 							+ LogBlock_Values.COLUMNNAME_BLOCK_COORDS + " = '" + playerCoords + "'");
 			while (res.next())
 			{
