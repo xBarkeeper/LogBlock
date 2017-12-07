@@ -1,8 +1,5 @@
 package de.rissi.LogBlock.Events;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -55,16 +52,8 @@ public class LogBlock_BlockEvent implements Listener
 				+ "'" + block.getTypeId() + ":" + block.getData() + "',"
 				+ "'" + coords + "',"
 				+ "'" + Action + "',"
-				+ "'" + getCurrentTimeStamp() + "',"
+				+ "'" + LogBlock_Values.getCurrentTimeStamp() + "',"
 				+ "'" + p.getUniqueId() + "'"
 				+ ")");
 	}
-	
-	public static String getCurrentTimeStamp() {
-	    SimpleDateFormat sdfDate = new SimpleDateFormat(LogBlock_Values.TIMEFORMAT_DATABASE);
-	    Date now = new Date();
-	    String strDate = sdfDate.format(now);
-	    return strDate;
-	}
-
 }

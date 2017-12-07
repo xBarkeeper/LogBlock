@@ -12,13 +12,13 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import de.rissi.LogBlock.Main.LogBlock;
 import de.rissi.LogBlock.Main.LogBlock_Values;
 
-public class LogBlock_SetArenaEvent implements Listener
+public class LogBlock_SetPositionWithTool implements Listener
 {
 
 	@SuppressWarnings("unused")
 	private LogBlock plugin;
 
-	public LogBlock_SetArenaEvent(LogBlock LogBlock)
+	public LogBlock_SetPositionWithTool(LogBlock LogBlock)
 	{
 		this.plugin = LogBlock;
 	}

@@ -6,7 +6,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.rissi.LogBlock.Database.Databse_Utils;
 import de.rissi.LogBlock.Events.LogBlock_BlockEvent;
-import de.rissi.LogBlock.Events.LogBlock_SetArenaEvent;
+import de.rissi.LogBlock.Events.LogBlock_PlayerInEditMode;
+import de.rissi.LogBlock.Events.LogBlock_SetPositionWithTool;
 
 public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 {
@@ -28,8 +29,11 @@ public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 		new LogBlock_BlockEvent(this);
 		getServer().getPluginManager().registerEvents(new LogBlock_BlockEvent(this) , this);
 		
-		new LogBlock_SetArenaEvent(this);
-		getServer().getPluginManager().registerEvents(new LogBlock_SetArenaEvent(this) , this);
+		new LogBlock_SetPositionWithTool(this);
+		getServer().getPluginManager().registerEvents(new LogBlock_SetPositionWithTool(this) , this);
+		
+		new LogBlock_PlayerInEditMode(this);
+		getServer().getPluginManager().registerEvents(new LogBlock_PlayerInEditMode(this) , this);
 	}
 
 }

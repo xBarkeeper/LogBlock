@@ -19,6 +19,11 @@ public class LogBlock_ResetAreaCommand
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
+		
+		if(!(args.length == 1 || args.length == 2)) {
+			p.sendMessage(LogBlock_Values.WRONGCOMMANDUSE);
+			return true;
+		}
 
 		Integer[] pos1 = LogBlock_Values.areaHashMap.get("1:" + p.getUniqueId());
 		Integer[] pos2 = LogBlock_Values.areaHashMap.get("2:" + p.getUniqueId());
@@ -68,11 +73,23 @@ public class LogBlock_ResetAreaCommand
 	}
 
 	@SuppressWarnings("deprecation")
-	public static void resetBlocks(int x, int y, int z, String[] args) throws SQLException {
-		ResultSet res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME + "."
-				+ LogBlock_Values.DATABASE_TABLE_BLOCK + " WHERE " + LogBlock_Values.COLUMNNAME_BLOCK_COORDS + " = '"
-				+ x + "," + y + "," + z + "' and " + LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME + " >= '" + args[0] + " "
-				+ args[1] + "'");
+	public static void resetBlocks(int x, int y, int z, String[] args) throws SQLException
+	{
+		ResultSet res;
+		if (args.length == 1)
+		{
+			String time[] = LogBlock_Values.getCurrentTimeStamp().split(" ");
+			res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME + "."
+					+ LogBlock_Values.DATABASE_TABLE_BLOCK + " WHERE " + LogBlock_Values.COLUMNNAME_BLOCK_COORDS
+					+ " = '" + x + "," + y + "," + z + "' and " + LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME + " >= '"
+					+ time[0] + " " + args[1] + "'");
+		} else
+		{
+			res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME + "."
+					+ LogBlock_Values.DATABASE_TABLE_BLOCK + " WHERE " + LogBlock_Values.COLUMNNAME_BLOCK_COORDS
+					+ " = '" + x + "," + y + "," + z + "' and " + LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME + " >= '"
+					+ args[0] + " " + args[1] + "'");
+		}
 		while (res.next())
 		{
 			if (res.isFirst())
@@ -91,5 +108,5 @@ public class LogBlock_ResetAreaCommand
 			}
 		}
 	}
-
+	
 }

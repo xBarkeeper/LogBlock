@@ -1,8 +1,12 @@
 package de.rissi.LogBlock.Main;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class LogBlock_Values
@@ -46,17 +50,44 @@ public class LogBlock_Values
 
 		// Messages
 		
-		public static final String WRONGCOMMANDUSE = "Use \"/lb help\"";
-		public static final String POSITION1SET = "Position 1 gesetzt";
-		public static final String POSITION2SET = "Position 2 gesetzt";
+		public static final String					WRONGCOMMANDUSE					= "Use \"/lb help\"";
+		public static final String					POSITION1SET					= "Position 1 gesetzt";
+		public static final String					POSITION2SET					= "Position 2 gesetzt";
+		public static final String					ENTEREDITORMODE					= "§3Du bist nun im Editor Mode!";
+		public static final String					LEAVEEDITOTMODE					= "§3Du bist nun nicht mehr im Editor Mode!";
+		
+		// Tools
+		
+		public static final String					POSITIONTOOL					= "positiontool";
+		public static final Material				POSITIONTOOL_MATERIAL			= Material.WOOD_SPADE;
+		public static final String					BACKTOOL						= "backtool";
+		public static final Material				BACKTOOL_MATERIAL				= Material.BARRIER;
+		public static final String					SETFIRSTPOSITIONTOOL			= "setfirstpositiontool";
+		public static final Material				SETFIRSTPOSITIONTOOL_MATERIAL	= Material.LAVA_BUCKET;
+		public static final String					SETSECONDPOSITIONTOOL			= "setsecondpositiontool";
+		public static final Material				SETSECONDPOSITIONTOOL_MATERIAL	= Material.WATER_BUCKET;
 		
 		// Utils
-	
+		
 		public static final String					TIMEFORMAT						= ("dd.MM.yyyy HH:mm:ss");
 		public static final String					TIMEFORMAT_DATABASE				= ("yyyy-MM-dd HH:mm:ss");
+		
+		// HashMaps
 		public static HashMap<String, Integer[]>	areaHashMap						= new HashMap<String, Integer[]>();
 		public static HashMap<UUID, ItemStack[]>	inventoryContents				= new HashMap<UUID, ItemStack[]>();
 		public static HashMap<UUID, ItemStack[]>	inventoryArmorContents			= new HashMap<UUID, ItemStack[]>();
 		public static HashMap<UUID, Boolean>		inEditMode						= new HashMap<UUID, Boolean>();
 		public static HashMap<String, ItemStack>	editModeitemsHashMap			= new HashMap<String, ItemStack>();
+		public static HashMap<UUID, Integer>		food							= new HashMap<UUID, Integer>();
+		public static HashMap<UUID, Double>			health							= new HashMap<UUID, Double>();
+		public static HashMap<UUID, Location>		location						= new HashMap<UUID, Location>();
+		
+	//Methods
+		
+		public static String getCurrentTimeStamp() {
+		    SimpleDateFormat sdfDate = new SimpleDateFormat(TIMEFORMAT_DATABASE);
+		    Date now = new Date();
+		    String strDate = sdfDate.format(now);
+		    return strDate;
+		}
 }
