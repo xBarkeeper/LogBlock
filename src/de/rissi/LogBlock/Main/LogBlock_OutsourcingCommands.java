@@ -23,18 +23,26 @@ public class LogBlock_OutsourcingCommands implements CommandExecutor
 
 		Player p = (Player) sender;
 		
-		if(args.length == 0) 
-			p.sendMessage(LogBlock_Values.WRONGCOMMANDUSE);
-		else if(args[0].equalsIgnoreCase("history"))
-			LogBlock_BlockBreakHistoryCommand.onCommand(sender, cmd, label, shortArgs(args));
-		else if(args[0].equalsIgnoreCase("help"))
-			LogBlock_HelpCommand.onCommand(sender, cmd, label, shortArgs(args));
-		else if(args[0].equalsIgnoreCase("reset"))
-			LogBlock_ResetAreaCommand.onCommand(sender, cmd, label, shortArgs(args));
-		else if(args[0].equalsIgnoreCase("setPos"))
-			LogBlock_SetAreaCommand.onCommand(sender, cmd, label, shortArgs(args));
-		else
-			p.sendMessage(LogBlock_Values.WRONGCOMMANDUSE);
+		switch(args[0].toLowerCase()) {
+			case "history":
+				LogBlock_BlockBreakHistoryCommand.onCommand(sender, cmd, label, shortArgs(args));
+				break;
+			case "help":
+				LogBlock_HelpCommand.onCommand(sender, cmd, label, shortArgs(args));
+				break;
+			case "reset":
+				LogBlock_ResetAreaCommand.onCommand(sender, cmd, label, shortArgs(args));
+				break;
+			case "setpos":
+				LogBlock_SetAreaCommand.onCommand(sender, cmd, label, shortArgs(args));
+				break;
+			case "gui":
+				LogBlock_Gui.onCommand(sender, cmd, label, shortArgs(args));
+				break;
+			default:
+					p.sendMessage(LogBlock_Values.WRONGCOMMANDUSE);
+					break;
+		}		
 
 		return true;
 	}
