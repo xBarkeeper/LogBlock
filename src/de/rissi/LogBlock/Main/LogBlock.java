@@ -22,7 +22,7 @@ public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 
 	private void registerCommands() {
 		LogBlock_OutsourcingCommands cLogBlock_OutsourcingCommands = new LogBlock_OutsourcingCommands(this);
-		getCommand("LogBlock").setExecutor(cLogBlock_OutsourcingCommands);
+		getCommand(LogBlock_Values.MAINCOMMAND).setExecutor(cLogBlock_OutsourcingCommands);
 	}
 
 	private void registerEvents() {

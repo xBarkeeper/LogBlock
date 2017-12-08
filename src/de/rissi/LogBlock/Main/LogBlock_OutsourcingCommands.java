@@ -24,20 +24,20 @@ public class LogBlock_OutsourcingCommands implements CommandExecutor
 		Player p = (Player) sender;
 		
 		switch(args[0].toLowerCase()) {
-			case "history":
+			case LogBlock_Values.BLOCKBREAKHISTORYCOMMAND:
 				LogBlock_BlockBreakHistoryCommand.onCommand(sender, cmd, label, shortArgs(args));
 				break;
-			case "help":
+			case LogBlock_Values.HELPCOMMAND:
 				LogBlock_HelpCommand.onCommand(sender, cmd, label, shortArgs(args));
 				break;
-			case "reset":
+			case LogBlock_Values.RESETAREACOMMAND:
 				LogBlock_ResetAreaCommand.onCommand(sender, cmd, label, shortArgs(args));
 				break;
-			case "setpos":
+			case LogBlock_Values.SETAREACOMMAND:
 				LogBlock_SetAreaCommand.onCommand(sender, cmd, label, shortArgs(args));
 				break;
-			case "gui":
-				LogBlock_Gui.onCommand(sender, cmd, label, shortArgs(args));
+			case LogBlock_Values.EDITMODECOMMAND:
+				LogBlock_EditModeCommand.onCommand(sender, cmd, label, shortArgs(args));
 				break;
 			default:
 					p.sendMessage(LogBlock_Values.WRONGCOMMANDUSE);

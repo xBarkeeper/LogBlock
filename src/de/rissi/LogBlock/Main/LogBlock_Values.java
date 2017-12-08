@@ -58,15 +58,20 @@ public class LogBlock_Values
 		
 		// Tools
 		
-		public static final String					POSITIONTOOL					= "positiontool";
 		public static final Material				POSITIONTOOL_MATERIAL			= Material.WOOD_SPADE;
-		public static final String					BACKTOOL						= "backtool";
 		public static final Material				BACKTOOL_MATERIAL				= Material.BARRIER;
-		public static final String					SETFIRSTPOSITIONTOOL			= "setfirstpositiontool";
 		public static final Material				SETFIRSTPOSITIONTOOL_MATERIAL	= Material.LAVA_BUCKET;
-		public static final String					SETSECONDPOSITIONTOOL			= "setsecondpositiontool";
 		public static final Material				SETSECONDPOSITIONTOOL_MATERIAL	= Material.WATER_BUCKET;
 		
+		// Commands
+	
+		public static final String					MAINCOMMAND						= "LogBlock";
+		public static final String					BLOCKBREAKHISTORYCOMMAND		= "history";
+		public static final String					EDITMODECOMMAND						= "gui";
+		public static final String					HELPCOMMAND						= "help";
+		public static final String					RESETAREACOMMAND				= "reset";
+		public static final String					SETAREACOMMAND					= "setpos";
+
 		// Utils
 		
 		public static final String					TIMEFORMAT						= ("dd.MM.yyyy HH:mm:ss");
@@ -77,7 +82,6 @@ public class LogBlock_Values
 		public static HashMap<UUID, ItemStack[]>	inventoryContents				= new HashMap<UUID, ItemStack[]>();
 		public static HashMap<UUID, ItemStack[]>	inventoryArmorContents			= new HashMap<UUID, ItemStack[]>();
 		public static HashMap<UUID, Boolean>		inEditMode						= new HashMap<UUID, Boolean>();
-		public static HashMap<String, ItemStack>	editModeitemsHashMap			= new HashMap<String, ItemStack>();
 		public static HashMap<UUID, Integer>		food							= new HashMap<UUID, Integer>();
 		public static HashMap<UUID, Double>			health							= new HashMap<UUID, Double>();
 		public static HashMap<UUID, Location>		location						= new HashMap<UUID, Location>();

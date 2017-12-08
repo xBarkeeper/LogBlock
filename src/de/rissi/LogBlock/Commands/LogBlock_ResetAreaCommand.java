@@ -82,7 +82,7 @@ public class LogBlock_ResetAreaCommand
 			res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME + "."
 					+ LogBlock_Values.DATABASE_TABLE_BLOCK + " WHERE " + LogBlock_Values.COLUMNNAME_BLOCK_COORDS
 					+ " = '" + x + "," + y + "," + z + "' and " + LogBlock_Values.COLUMNNAME_BLOCK_EDITTIME + " >= '"
-					+ time[0] + " " + args[1] + "'");
+					+ time[0] + " " + args[0] + "'");
 		} else
 		{
 			res = Databse_Utils.statement.executeQuery("SELECT * FROM " + LogBlock_Values.DATABASE_DBNAME + "."

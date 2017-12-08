@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import de.rissi.LogBlock.Main.LogBlock_Values;
 
-public class LogBlock_Gui
+public class LogBlock_EditModeCommand
 {
 
 	@SuppressWarnings("deprecation")
@@ -20,6 +20,7 @@ public class LogBlock_Gui
 		if(LogBlock_Values.inEditMode.containsKey(p.getUniqueId()) && LogBlock_Values.inEditMode.get(p.getUniqueId()) == true) {
 			
 			leaveEditMode(p);
+			p.updateInventory();
 			
 		}else {
 			LogBlock_Values.inEditMode.put(p.getUniqueId(), true);
@@ -30,10 +31,11 @@ public class LogBlock_Gui
 			LogBlock_Values.food.put(p.getUniqueId(), p.getFoodLevel());
 			LogBlock_Values.location.put(p.getUniqueId(), p.getLocation());
 			
-			p.setMaxHealth(40.0);
+			p.setHealth(20.0);
 			p.setFoodLevel(20);
 			p.setAllowFlight(true);
 			
+			p.updateInventory();
 			p.sendMessage(LogBlock_Values.ENTEREDITORMODE);
 		}
 		
@@ -65,19 +67,10 @@ public class LogBlock_Gui
 		p.getInventory().setLeggings(null);
 		p.getInventory().setBoots(null);
 		
-		LogBlock_Values.editModeitemsHashMap.put(LogBlock_Values.POSITIONTOOL,
-				createItem(LogBlock_Values.POSITIONTOOL_MATERIAL, "§3Positions Tool", Enchantment.ARROW_INFINITE));
-		LogBlock_Values.editModeitemsHashMap.put(LogBlock_Values.BACKTOOL,
-				createItem(LogBlock_Values.BACKTOOL_MATERIAL, "§4Zurück", Enchantment.ARROW_INFINITE));
-		LogBlock_Values.editModeitemsHashMap.put(LogBlock_Values.SETFIRSTPOSITIONTOOL,
-				createItem(LogBlock_Values.SETFIRSTPOSITIONTOOL_MATERIAL, "§2Setz Position 1", Enchantment.ARROW_INFINITE));
-		LogBlock_Values.editModeitemsHashMap.put(LogBlock_Values.SETSECONDPOSITIONTOOL,
-				createItem(LogBlock_Values.SETSECONDPOSITIONTOOL_MATERIAL, "§2Setz Position 2", Enchantment.ARROW_INFINITE));
-		
-		p.getInventory().setItem(0, LogBlock_Values.editModeitemsHashMap.get(LogBlock_Values.POSITIONTOOL));
-		p.getInventory().setItem(2, LogBlock_Values.editModeitemsHashMap.get(LogBlock_Values.SETFIRSTPOSITIONTOOL));
-		p.getInventory().setItem(3, LogBlock_Values.editModeitemsHashMap.get(LogBlock_Values.SETSECONDPOSITIONTOOL));
-		p.getInventory().setItem(8, LogBlock_Values.editModeitemsHashMap.get(LogBlock_Values.BACKTOOL));
+		p.getInventory().setItem(0, createItem(LogBlock_Values.POSITIONTOOL_MATERIAL, "§3Positions Tool", Enchantment.ARROW_INFINITE));
+		p.getInventory().setItem(2, createItem(LogBlock_Values.SETFIRSTPOSITIONTOOL_MATERIAL, "§2Setz Position 1", Enchantment.ARROW_INFINITE));
+		p.getInventory().setItem(3, createItem(LogBlock_Values.SETSECONDPOSITIONTOOL_MATERIAL, "§2Setz Position 2", Enchantment.ARROW_INFINITE));
+		p.getInventory().setItem(8, createItem(LogBlock_Values.BACKTOOL_MATERIAL, "§4Zurück", Enchantment.ARROW_INFINITE));
 	}
 	
 	public static ItemStack createItem(Material material, String Name, Enchantment enchantment) {
