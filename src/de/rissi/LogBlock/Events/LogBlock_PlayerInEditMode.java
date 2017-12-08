@@ -1,10 +1,8 @@
 package de.rissi.LogBlock.Events;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -34,17 +32,16 @@ public class LogBlock_PlayerInEditMode implements Listener
     public void OnInteract(PlayerInteractEvent e){
         Player p = e.getPlayer();
         
-        if(e.getItem() != null && e.getItem().getType() == Material.WOOD_SPADE)
+        if(e.getItem() != null && e.getItem().getType() == LogBlock_Values.SETFIRSTPOSITIONTOOL_MATERIAL)
         {
-        	Integer[] position = {e.getClickedBlock().getX(), e.getClickedBlock().getY(), e.getClickedBlock().getZ()};
-        	LogBlock_Values.areaHashMap.put("1:" + p.getUniqueId(), position);
-        	p.sendMessage(LogBlock_Values.POSITION1SET);
-        }else if(e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getItem() != null && e.getItem().getType() == Material.WOOD_SPADE)
-        {
-        	Integer[] position = {e.getClickedBlock().getX(), e.getClickedBlock().getY(), e.getClickedBlock().getZ()};
-        	LogBlock_Values.areaHashMap.put("2:" + p.getUniqueId(), position);
-        	p.sendMessage(LogBlock_Values.POSITION2SET);
+        	p.sendMessage("Positionstool gedrückt!");
         }
+//        else if(e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getItem() != null && e.getItem().getType() == Material.WOOD_SPADE)
+//        {
+//        	Integer[] position = {e.getClickedBlock().getX(), e.getClickedBlock().getY(), e.getClickedBlock().getZ()};
+//        	LogBlock_Values.areaHashMap.put("2:" + p.getUniqueId(), position);
+//        	p.sendMessage(LogBlock_Values.POSITION2SET);
+//        }
        
     }
 	
