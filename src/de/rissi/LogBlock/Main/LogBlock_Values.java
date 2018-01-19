@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class LogBlock_Values
@@ -67,7 +68,7 @@ public class LogBlock_Values
 	
 		public static final String					MAINCOMMAND						= "LogBlock";
 		public static final String					BLOCKBREAKHISTORYCOMMAND		= "history";
-		public static final String					EDITMODECOMMAND						= "gui";
+		public static final String					EDITMODECOMMAND					= "gui";
 		public static final String					HELPCOMMAND						= "help";
 		public static final String					RESETAREACOMMAND				= "reset";
 		public static final String					SETAREACOMMAND					= "setpos";
@@ -93,5 +94,12 @@ public class LogBlock_Values
 		    Date now = new Date();
 		    String strDate = sdfDate.format(now);
 		    return strDate;
+		}
+		
+		public static boolean playerIsInEditMode(Player p) {
+			if(LogBlock_Values.inEditMode.containsKey(p.getUniqueId()) && LogBlock_Values.inEditMode.get(p.getUniqueId()) == true || !(LogBlock_Values.inEditMode.containsKey(p.getUniqueId())) ) {
+				return false;
+			}
+			return true;
 		}
 }

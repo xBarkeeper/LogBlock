@@ -13,6 +13,8 @@ public class Databse_Utils
 	public static MySQL			MySql	= new MySQL(LogBlock_Values.DATABASE_IP, LogBlock_Values.DATABASE_PORT,
 			LogBlock_Values.DATABASE_USERNAME, LogBlock_Values.DATABASE_USERPASSWORD);
 
+	//Setup the Database Connection
+	
 	public static void setup(String createDB, String[] createTable) {
 		try
 		{
@@ -33,6 +35,8 @@ public class Databse_Utils
 		}
 	}
 
+	//Method used to scribe in Database
+	
 	public static void scribe(String executeCommand) {
 
 		try

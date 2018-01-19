@@ -22,26 +22,36 @@ public class LogBlock_BlockEvent implements Listener
 		this.plugin = LogBlock;
 	}
 
+	//Scribe into Database if a Block will be destroyed by a Player
+	
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent e) {
 		Player p = (Player) e.getPlayer();
 		Block block = e.getBlock();
 		
-		scribeToDB(p, block, LogBlock_Values.BREAK);
+		if(LogBlock_Values.playerIsInEditMode(p)) {
+			scribeToDB(p, block, LogBlock_Values.BREAK);
+		}
 	}
+	
+	//Scribe into Database if a Block will be set by a Player
 	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent e) {
 		Player p = (Player) e.getPlayer();
 		Block block = e.getBlock();
 		
-		scribeToDB(p, block, LogBlock_Values.CREATE);
+		if(!LogBlock_Values.playerIsInEditMode(p)) {
+			scribeToDB(p, block, LogBlock_Values.CREATE);
+		}
 	}
+	
+	//Method that helps to Scribe the Block in Database
 	
 	@SuppressWarnings("deprecation")
 	public static void scribeToDB(Player p, Block block, String Action) {
 
-		String coords = block.getX() + "," + block.getY() + "," + block.getZ();
+		String blockCoords = block.getX() + "," + block.getY() + "," + block.getZ();
 		
 		Databse_Utils.scribe("INSERT INTO " + LogBlock_Values.DATABASE_DBNAME + "." + LogBlock_Values.DATABASE_TABLE_BLOCK
 				+ "(`" + LogBlock_Values.COLUMNNAME_BLOCK_TYP + "`, `" + LogBlock_Values.COLUMNNAME_BLOCK_COORDS + "`,"
@@ -50,7 +60,7 @@ public class LogBlock_BlockEvent implements Listener
 				+ " VALUES "
 				+ "("
 				+ "'" + block.getTypeId() + ":" + block.getData() + "',"
-				+ "'" + coords + "',"
+				+ "'" + blockCoords + "',"
 				+ "'" + Action + "',"
 				+ "'" + LogBlock_Values.getCurrentTimeStamp() + "',"
 				+ "'" + p.getUniqueId() + "'"

@@ -31,11 +31,12 @@ public class LogBlock_PlayerInEditMode implements Listener
 		this.plugin = LogBlock;
 	}
 
+	//Do Action when Player interact with EditMode Items
+	
 	@EventHandler
 	public void OnInteract(PlayerInteractEvent e) {
 		Player p = (Player) e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			if (e.getItem() != null)
 			{
@@ -51,11 +52,12 @@ public class LogBlock_PlayerInEditMode implements Listener
 
 	}
 
+	//Kill Events if Player is in EditMode
+	
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent e) {
 		Player p = (Player) e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -64,8 +66,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent e) {
 		Player p = (Player) e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -74,8 +75,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void onPlayeUseBukkit(PlayerBucketEmptyEvent e) {
 		Player p = (Player) e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -86,8 +86,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 		if (e.getEntity() instanceof Player)
 		{
 			Player p = (Player) e.getEntity();
-			if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-					&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+			if (LogBlock_Values.playerIsInEditMode(p))
 			{
 				e.setCancelled(true);
 			}
@@ -97,8 +96,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void onFoodLevelChange(FoodLevelChangeEvent e) {
 		Player p = (Player) e.getEntity();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -107,8 +105,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void OnPlayerPickup(PlayerPickupItemEvent e) {
 		Player p = e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -117,8 +114,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -127,8 +123,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void onDropItem(PlayerDropItemEvent e) {
 		Player p = e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			e.setCancelled(true);
 		}
@@ -137,8 +132,7 @@ public class LogBlock_PlayerInEditMode implements Listener
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		if (LogBlock_Values.inEditMode.containsKey(p.getUniqueId())
-				&& LogBlock_Values.inEditMode.get(p.getUniqueId()) == true)
+		if (LogBlock_Values.playerIsInEditMode(p))
 		{
 			    	LogBlock_EditModeCommand.leaveEditMode(p);
 		}

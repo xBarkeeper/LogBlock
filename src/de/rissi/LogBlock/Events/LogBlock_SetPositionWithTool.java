@@ -23,16 +23,18 @@ public class LogBlock_SetPositionWithTool implements Listener
 		this.plugin = LogBlock;
 	}
 
+	//Handle if the Player interact with Position Tool
+	
 	@EventHandler
     public void OnInteract(PlayerInteractEvent e){
         Player p = e.getPlayer();
         
-        if(e.getAction() == Action.LEFT_CLICK_BLOCK && e.getItem() != null && e.getItem().getType() == Material.WOOD_SPADE)
+        if(e.getAction() == Action.LEFT_CLICK_BLOCK && e.getItem() != null && e.getItem().getType() == LogBlock_Values.POSITIONTOOL_MATERIAL)
         {
         	Integer[] position = {e.getClickedBlock().getX(), e.getClickedBlock().getY(), e.getClickedBlock().getZ()};
         	LogBlock_Values.areaHashMap.put("1:" + p.getUniqueId(), position);
         	p.sendMessage(LogBlock_Values.POSITION1SET);
-        }else if(e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getItem() != null && e.getItem().getType() == Material.WOOD_SPADE)
+        }else if(e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getItem() != null && e.getItem().getType() == LogBlock_Values.POSITIONTOOL_MATERIAL)
         {
         	Integer[] position = {e.getClickedBlock().getX(), e.getClickedBlock().getY(), e.getClickedBlock().getZ()};
         	LogBlock_Values.areaHashMap.put("2:" + p.getUniqueId(), position);
@@ -40,6 +42,8 @@ public class LogBlock_SetPositionWithTool implements Listener
         }
        
     }
+	
+	//Cancel BlockBreakEvent if Player interact with Position tool
 	
 	@SuppressWarnings("deprecation")
 	@EventHandler

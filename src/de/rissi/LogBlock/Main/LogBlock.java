@@ -11,7 +11,9 @@ import de.rissi.LogBlock.Events.LogBlock_SetPositionWithTool;
 
 public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 {
-
+	
+	//Enable Plugin and Setup Database
+	
 	@Override
 	public void onEnable() {
 		super.onEnable();
@@ -19,11 +21,15 @@ public class LogBlock extends JavaPlugin implements CommandExecutor, Listener
 		registerEvents();
 		Databse_Utils.setup(LogBlock_Values.DATABASE_CREATEDB_COMMAND, LogBlock_Values.DATABASE_CREATETABLE_COMMAND);
 	}
+	
+	//Register Command
 
 	private void registerCommands() {
 		LogBlock_OutsourcingCommands cLogBlock_OutsourcingCommands = new LogBlock_OutsourcingCommands(this);
 		getCommand(LogBlock_Values.MAINCOMMAND).setExecutor(cLogBlock_OutsourcingCommands);
 	}
+	
+	//Register Event Classes 
 
 	private void registerEvents() {
 		new LogBlock_BlockEvent(this);

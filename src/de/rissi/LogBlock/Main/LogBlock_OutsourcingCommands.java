@@ -18,6 +18,8 @@ public class LogBlock_OutsourcingCommands implements CommandExecutor
 		this.plugin = plugin;
 	}
 
+	//Pass the Command to the Right Class
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -46,6 +48,8 @@ public class LogBlock_OutsourcingCommands implements CommandExecutor
 
 		return true;
 	}
+	
+	//Remove the zeroth Argument of the Command
 
 	public String[] shortArgs(String[] args) {
 		String[] newArgs = new String[(args.length - 1)];
