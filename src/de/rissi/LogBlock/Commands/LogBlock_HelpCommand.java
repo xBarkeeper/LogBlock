@@ -10,7 +10,7 @@ public class LogBlock_HelpCommand
 	public static boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
 
-		p.sendMessage("Pung");
+		p.sendMessage("pong");
 		
 
 		return true;
